@@ -1,6 +1,6 @@
 name: MultiVersion
 version: 1.0.0
-main: MultiVersion
+main: Luthfi\MultiVersion\Main
 api: 5.0.0
 author: Luthfi
 description: A plugin to support multiple Minecraft Bedrock versions.
