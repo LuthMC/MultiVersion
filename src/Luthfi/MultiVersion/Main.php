@@ -11,8 +11,8 @@ class Main extends PluginBase implements Listener {
 
     private $supportedProtocols = [
         ProtocolInfo::CURRENT_PROTOCOL,
-        448;
-        450;
+        448,
+        450,
         451
     ];
 
