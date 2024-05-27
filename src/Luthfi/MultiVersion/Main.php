@@ -27,7 +27,7 @@ class Main extends PluginBase implements Listener {
 
     public function onPlayerJoin(PlayerJoinEvent $event): void {
         $player = $event->getPlayer();
-        $protocol = $player->getNetworkSession()->getProtocolId();
+        $protocol = $player->getNetworkSession()->getProtocolInfo()->getProtocolVersion();
 
         if (!in_array($protocol, $this->supportedProtocols)) {
             $player->kick("Your version is not supported! Supported versions: 1.20.60 to 1.20.80");
