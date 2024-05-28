@@ -1,6 +1,15 @@
 name: MultiVersionPlugin
 version: 1.0.0
-main: Luthfi\MultiVersion\MultiVersionPlugin
+main: Luthfi\MultiVersion\Main
 api: 5.0.0
 author: Luthfi
-description: A plugin to support multiple Minecraft Bedrock versions.
+description: MultiVersion support for PocketMine-MP
+commands:
+  mv:
+    description: Test MultiVersion handling
+    usage: /mv
+    permission: multiversion.use
+permissions:
+  multiversion.use:
+    description: Allows the player to use the MultiVersion command
+    default: true
