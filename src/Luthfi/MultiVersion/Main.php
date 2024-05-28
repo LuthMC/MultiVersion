@@ -9,10 +9,14 @@ use pocketmine\player\Player;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\utils\TextFormat;
+use pocketmine\network\mcpe\protocol\ProtocolInfo;
 
 class Main extends PluginBase implements Listener {
 
     private const SUPPORTED_PROTOCOLS = [
+        534, // 1.20.10
+        540, // 1.20.20
+        544, // 1.20.30
         554, // 1.20.60
         555, // 1.20.61
         556, // 1.20.62
@@ -52,7 +56,6 @@ class Main extends PluginBase implements Listener {
             $this->getLogger()->info("Player " . $player->getName() . " joined with supported protocol version: " . $protocolVersion);
         } else {
             $this->getLogger()->warning("Player " . $player->getName() . " joined with unsupported protocol version: " . $protocolVersion);
-            $player->kick("Your Minecraft version is not supported on this server.");
         }
     }
 
