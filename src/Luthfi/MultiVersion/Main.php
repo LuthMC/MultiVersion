@@ -38,6 +38,7 @@ class Main extends PluginBase implements Listener {
         572, // 1.20.78
         573, // 1.20.79
         574, // 1.20.80
+        649, // 1.20.60, Just Test
     ];
 
     public function onEnable(): void {
