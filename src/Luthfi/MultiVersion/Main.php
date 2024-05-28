@@ -8,10 +8,33 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
-use pocketmine\network\mcpe\protocol\ProtocolInfo;
 use pocketmine\utils\TextFormat;
 
 class Main extends PluginBase implements Listener {
+
+    private const SUPPORTED_PROTOCOLS = [
+        554,
+        555,
+        556,
+        557,
+        558,
+        559,
+        560,
+        561,
+        562,
+        563,
+        564,
+        565,
+        566,
+        567,
+        568,
+        569,
+        570,
+        571,
+        572,
+        573,
+        574,
+    ];
 
     public function onEnable(): void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -25,7 +48,12 @@ class Main extends PluginBase implements Listener {
     public function onPlayerJoin(PlayerJoinEvent $event): void {
         $player = $event->getPlayer();
         $protocolVersion = $player->getNetworkSession()->getProtocolVersion();
-        $this->getLogger()->info("Player " . $player->getName() . " joined with protocol version: " . $protocolVersion);
+        if (in_array($protocolVersion, self::SUPPORTED_PROTOCOLS, true)) {
+            $this->getLogger()->info("Player " . $player->getName() . " joined with supported protocol version: " . $protocolVersion);
+        } else {
+            $this->getLogger()->warning("Player " . $player->getName() . " joined with unsupported protocol version: " . $protocolVersion);
+            $player->kick("Your Minecraft version is not supported on this server.");
+        }
     }
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
